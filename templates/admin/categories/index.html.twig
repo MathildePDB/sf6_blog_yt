@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="my-5">
+            <h1>Catégories disponibles</h1>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Parent</th>
+                    <th>Slug</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for categorie in categories %}
+                <tr>
+                    <td>{{ categorie.id }}</td>
+                    {% if categorie.parent is null %}
+                        <td><strong>{{ categorie.name }}</strong></td>
+                    {% else %}
+                        <td>{{ categorie.name }}</td>
+                    {% endif %}
+                    <td>{{ categorie.parent }}</td>
+                    <td>{{ categorie.slug }}</td>
+                    <td>
+                    {% if categorie.parent is not null %}
+                        <button class="btn btn-dark"><a href="{{ path('app_admin_category_show', {"slug": categorie.slug}) }}" class="nav-link">voir</a></button>
+                        <button class="btn btn-primary"><a href="{{ path('app_admin_category_edit', {"slug": categorie.slug}) }}" class="nav-link">modifier</a></button>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">aucune catégorie pour le moment</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-primary"><a href="{{ path('app_admin_category_new') }}" class="nav-link text-white">Ajouter une catégorie</a></button>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Comments{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="my-5">
+            <h1>Modifier le commentaire</h1>
+        </div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-success">{{ button_label|default('Mettre à jour') }}</button>
+            </div>
+        {{ form_end(form) }}   
+    </div>
+{% endblock %}

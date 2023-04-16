@@ -1,0 +1,5 @@
+<h1>Site Blog sf6</h1>
+<h2>Activez votre compte</h2>
+<p>Bonjour {{ user.firstname ~ " " ~ user.lastname }}, </p>
+<p>Vous pouvez valider votre inscription en cliquant sur <a href="{{ absolute_url(path('verify_user', {token: token})) }}">ce lien</a>.</p>
+<p>Il expirera dans trois heures.</p>

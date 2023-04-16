@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'article{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="my-5">
+            <h1>Modifier l'article</h1>
+        </div>
+    {{ form_start(form) }}
+        {{ form_widget(form.title)}}
+        {{ form_widget(form.subtitle)}}
+        {{ form_widget(form.content)}}
+        {{ form_widget(form.categorie)}}
+        {{ form_widget(form.user)}}
+    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }} 
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles publiés{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="d-flex justify-content-between my-5">
+			<h1>Articles publiés</h1>
+			<button class="btn btn-primary">
+				<a href="{{ path('app_blog_new') }}" class="nav-link text-white">Nouvel article</a>
+			</button>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Sous-titre</th>
+					<th>Date de création</th>
+					<th class="w-25">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for post in posts %}
+					<tr>
+						<td>{{ post.title }}</td>
+						<td>{{ post.subtitle }}</td>
+						<td>{{ post.createdAt ? post.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+						<td class="w-25">
+							<button class="btn btn-dark"><a href="{{ path('app_blog_show', {"slug": post.slug}) }}" class="nav-link text-white">voir</a></button>
+							<button class="btn btn-primary"><a href="{{ path('app_blog_edit', {"slug": post.slug}) }}" class="nav-link text-white">modifier</a></button>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">aucun article posté pour le moment</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

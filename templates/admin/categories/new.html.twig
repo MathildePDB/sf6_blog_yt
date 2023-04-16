@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle catégorie{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class=" my-5">
+            <h1>Nouvelle catégorie</h1>
+        </div>
+        {{ include('admin/categories/_form.html.twig') }}
+    </div>
+{% endblock %}

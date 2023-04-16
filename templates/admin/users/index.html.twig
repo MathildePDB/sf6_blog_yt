@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="my-5">
+            <h1>Liste des utilisateurs du site</h1>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôles</th>
+                    <th>Email vérifié</th>
+                    <th>Date de création</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{% for role in user.roles %} {{ role }} {% endfor %}</td>
+                    <td>{{ user.isVerified }}</td>
+                    <td>{{ user.createdAt ? user.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                    <td>
+                        <button class="btn btn-primary"><a href="" class="nav-link">modifier les autorisations</a></button>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">aucun article posté pour le moment</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {# <button class="btn btn-primary"><a href="{{ path('app_posts_new') }}" class="nav-link text-white">Nouvel article</a></button> #}
+    </div>
+{% endblock %}

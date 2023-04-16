@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class=" my-5">
+            <h1>se connecter</h1>
+        </div>
+        <div class="d-flex justify-content-end align-items-center pb-2">
+            <p class="mx-3 my-0">Vous n'avez pas encore de compte ?</p>
+            <button class="btn btn-primary"><a href="{{ path('app_register') }}" class="nav-link text-white">Créer un compte</a></button>
+        </div>
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            {% if app.user %}
+                <div class="mb-3">
+                    Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <button class="btn btn-dark"><a href="{{ path('app_logout') }}" class="nav-link text-white">Se déconnecter</a></button>
+                </div>
+            {% endif %}
+            <label for="inputEmail" class="my-2">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control my-2" autocomplete="email" required autofocus>
+            <label for="inputPassword" class="my-2">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control my-2" autocomplete="current-password" required>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" class="my-2">
+            <div class="d-flex justify-content-between my-4">
+                <button class="btn btn-success" type="submit">Se connecter</button>
+                <button class="btn btn-primary"><a href="{{ path('app_forgotten_password')}}" class="nav-link text-white">Mot de passe oublié</a></button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+{% block title %}Blog{% endblock %}
+{% block body %}
+	<div class="container">
+		<div class=" my-5">
+			<h1>Blog</h1>
+		</div>
+		<section>
+            <h2>Tous les articles</h2>
+            <div class="d-flex flex-wrap justify-content-center">
+            {% for post in posts %}
+				<div class="card my-3" style="width: 90%;">
+					<img src="" class="card-img-top" alt="">
+					<div class="card-body">
+						<h4 class="card-title">{{ post.title }}</h4>
+						<h5 class="card-text">{{ post.categorie }}</h5>
+						<p class="card-text">{{ post.subtitle }}</p>
+                        <p class="card-text">{{ post.createdAt ? post.createdAt|date('d-m-Y') : '' }}</p>
+						<a href="{{ path('app_articles_show', {slug: post.slug}) }}" class="btn btn-primary">Voir plus</a>
+					</div>
+				</div>
+			{% endfor %}
+            </div>
+			<div class="mb-5">
+			{{ knp_pagination_render(posts) }}			
+			</div>
+		</section>
+	</div>
+{% endblock %}

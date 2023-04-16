@@ -1,0 +1,7 @@
+        {{ form_start(form) }}
+            {{ form_widget(form.ranking) }}
+            {{ form_widget(form.content) }}
+            {{ form_widget(form.user) }}
+            {{ form_widget(form.post) }}
+            <button class="btn btn-success">{{ button_label|default('Ajouter') }}</button>
+        {{ form_end(form) }}

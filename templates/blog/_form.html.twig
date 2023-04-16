@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    {{ form_widget(form.title)}}
+    {{ form_widget(form.subtitle)}}
+    {{ form_widget(form.content)}}
+    {{ form_widget(form.categorie)}}
+    {{ form_widget(form.user)}}
+    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

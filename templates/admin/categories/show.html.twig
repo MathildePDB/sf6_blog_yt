@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voir la catégorie{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="my-5">
+			<h1>Voir la catégorie</h1>
+		</div>
+        <div class="card">
+            <img src="" class="card-img-top" alt="">
+            <div class="card-body">
+                <h3 class="card-title">Nom de la catégorie : {{ category.name }}</h3>
+                <h5 class="card-title">Catégorie parente : {{ category.parent }}</h5>
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-primary"><a href="{{ path('app_admin_category_edit', {"slug": category.slug}) }}" class="nav-link text-white">modifier</a></button>
+                    {{ include('admin/categories/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+{% endblock %}

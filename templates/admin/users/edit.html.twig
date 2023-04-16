@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier les rôles de l'utilisateur{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="my-5">
+            <h1>Modifier les rôles de l'utilisateur</h1>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Nom de l'utilisateur : {{ user.firstname }} {{ user.lastname }}</h5>
+                <p class="card-text">Adresse email : {{ user.email }}</p>
+                <p>Date de création : {{ user.createdAt ? user.createdAt|date('d-m-Y H:i:s') : '' }}</p>
+            </div>
+        </div>
+        {{ include('admin/users/_form.html.twig', {'button_label': 'Modifier'}) }}  
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace administrateur{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="my-5">
+			<h1>Espace administrateur</h1>
+		</div>
+		<button class="btn btn-primary"><a href="{{ path('app_admin_posts') }}" class="nav-link text-white">Voir la liste des articles</a></button>
+		<button class="btn btn-primary"><a href="{{ path('app_admin_users') }}" class="nav-link text-white">Voir la liste des utilisateurs</a></button>
+		<button class="btn btn-primary"><a href="{{ path('app_admin_categories') }}" class="nav-link text-white">Voir les catégories disponibles</a></button>
+		<button class="btn btn-primary"><a href="{{ path('app_admin_comments') }}" class="nav-link text-white">Voir tous les commentaires</a></button>
+	</div>
+{% endblock %}
